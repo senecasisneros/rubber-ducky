@@ -30,6 +30,7 @@ export default class StatusButtons extends Component {
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/profile">View Profile</Link></li>
+        <li><Link to="projects">View Project</Link></li>
         <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
       </ul>
     )

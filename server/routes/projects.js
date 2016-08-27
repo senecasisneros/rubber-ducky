@@ -9,14 +9,19 @@ router.route('/')
 .get((req, res) => {
   Project.find({}, (err, projects) => {
     res.status(err ? 400 : 200).send(err || projects);
-  }).populate('user');
+  })
 })
+
+
 .post((req, res) => {
   Project.create(req.body, (err, newProject) => {
     res.status(err ? 400 : 200).send(err || newProject);
   });
 });
 
+// router.get('/addproject', User.authMiddleware, (req, res) => {
+//   res.send(req.user);
+// });
 
 router.get('/:id', (req, res) => {
   Project.findById(req.params.id, (err, project) => {

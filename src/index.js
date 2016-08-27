@@ -7,10 +7,11 @@ import Splash from './components/Splash'
 import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage'
 import ProfilePage from './components/ProfilePage'
+import ProjectPage from './components/ProjectPage'
 
-////////////////////////////////////////////////
+
 import UserStore from './stores/UserStore'
-////////////////////////////////////////////////
+
 
 //maybe wrong
 render(
@@ -20,6 +21,7 @@ render(
       <Route path='register' component={RegisterPage}/>
       <Route path='login' component={LoginPage}/>
       <Route path='profile' component={ProfilePage}/>
+      <Route path='project' component={ProjectPage}/>
     </Route>
   </Router>,
   document.getElementById('root')

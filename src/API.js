@@ -53,7 +53,14 @@ const API = {
       .then(res => res.data)
       .then(ServerActions.receiveProfiles)
       .catch(console.error);
-  }
+  },
+
+  getProject() {
+  axios.get('/api/project')
+    .then(res => res.data)
+    .then(ServerActions.receiveProject)
+    .catch(console.error)
+},
 
 }
 

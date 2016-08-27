@@ -20,6 +20,13 @@ const ServerActions = {
       type: Constants.RECEIVE_PROFILES,
       profiles
     })
+  },
+
+  receiveProject(project) {
+    AppDispatcher.dispatch({
+      type: Constants.RECEIVE_PROJECT,
+      project
+    })
   }
 };
 

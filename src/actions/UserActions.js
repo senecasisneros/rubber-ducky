@@ -6,7 +6,8 @@ const UserActions = {
   getProfile: API.getProfile,
   logout: API.logout,
   editProfile: API.editProfile,
-  getProfiles: API.getProfiles
+  getProfiles: API.getProfiles,
+  getProject: API.getProject
 };
 
 export default UserActions;
