@@ -3,9 +3,9 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-  projectName: { type: String, required: true,  },
-  createdAt: { type: Date, required: true, default: Date.now },
-  body: { type: String, required: true }
+  title: { type: String, required: true,  },
+  notes: { type: String, required: true },
+  createdAt: { type: Date, required: true, default: Date.now }
 });
 
 

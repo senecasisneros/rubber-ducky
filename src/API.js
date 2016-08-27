@@ -3,6 +3,7 @@ import RouteActions from './actions/RouteActions';
 import UserActions from './actions/UserActions';
 import ServerActions from './actions/ServerActions';
 
+console.log('API')
 const API = {
   register(user) {
     axios.post('/api/users/register', user)
@@ -32,7 +33,7 @@ const API = {
     .catch(console.error);
   },
 
-//// get profile data only///////
+  //// get profile data only///////
   getProfile() {
     axios.get(`/api/users/profile`)
     .then(res => res.data)
@@ -63,15 +64,32 @@ const API = {
     })
     .then(ServerActions.receiveProject)
     .catch(console.error)
-  }
-  // getProject() {
-  //   axios.get(`/api/projects`)
+  },
+
+  // createProject(project) {
+  //   console.log('projectAPI:', project)
+  //   axios.post(`/api/projects`, project)
   //   .then(res => {
-  //     console.log('res:', res)
+  //     console.log('sending obj data to SA:', res)
   //   })
   //   .then(ServerActions.receiveProject)
-  //   .catch(console.error)
+  //   .catch(console.error);
   // }
+
+  createProject(project) {
+  axios.post('/api/projects', project)
+  .then(res =>  res.data)
+  .then(ServerActions.receiveProject)
+  .catch(console.error);
+},
+
+
+deleteProject(id) {
+  axios.delete(`/api/projects/${id}`)
+  .then(res => res.data)
+  .then(ServerActions.deleteProject(id))
+  .catch(console.error);
+}
 
 }
 

@@ -32,6 +32,7 @@ export default class StatusButtons extends Component {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/profile">View Profile</Link></li>
         <li><a onClick={() => browserHistory.push(`/users/${profile._id}`)}>View Project</a></li>
+        <li><Link to='notes'>Notes</Link></li>
         <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
       </ul>
     )

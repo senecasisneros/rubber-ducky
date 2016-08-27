@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 // })
 
 
-.post((req, res) => {
+.post('/', (req, res) => {
   Project.create(req.body, (err, newProject) => {
     res.status(err ? 400 : 200).send(err || newProject);
   });

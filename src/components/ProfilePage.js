@@ -29,7 +29,7 @@ export default class ProfilePage extends Component {
   render() {
       return (
         <div className="container">
-          <h1>This is {this.state.profile.name}</h1>
+          <h1>This is {this.state.profile.body}</h1>
           <img src={this.state.profile.image} width="400px" />
           <EditProfile profile={this.state.profile}/>
         </div>

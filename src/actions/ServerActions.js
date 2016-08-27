@@ -22,12 +22,27 @@ const ServerActions = {
     })
   },
 
-  receiveProject(obj) {
+
+  //////////////////////////////////
+  /////// Project /////////////////
+
+  receiveProject(project) {
+    console.log('sending data to store:', project)
     AppDispatcher.dispatch({
       type: Constants.RECEIVE_PROJECT,
-      obj
+      project
     })
-  }
+  },
+
+  // deleteProject(id) {
+  //   AppDispatcher.dispatch({
+  //     type: 'DELETE_PROJECT',
+  //     id
+  //   })
+  // }
+
+
+
 };
 
 export default ServerActions;

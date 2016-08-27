@@ -4,6 +4,7 @@ import UserActions from '../actions/UserActions';
 import Constants from '../Constants';
 
 let _project = null;
+console.log('ProjectStore')
 
 class ProjectStore extends EventEmitter {
   constructor() {
@@ -12,19 +13,27 @@ class ProjectStore extends EventEmitter {
     AppDispatcher.register(action => {
       switch(action.type) {
         case Constants.RECEIVE_PROJECT:
-          _project = action.project;
-          this.emit('CHANGE');
-          break;
+        _project = action.project;
+        console.log('_project:', _project)
+        this.emit('CHANGE');
+        break;
         case Constants.REMOVE_PROFILE:
-          _project = null;
-          this.emit('CHANGE');
-          break;
+        _project = null;
+        this.emit('CHANGE');
+        break;
+        // case 'DELETE_PROJECT':
+        // var { id } = action;
+        // _project = _project.filter(i => i._id !== id);
+        // this.emit("CHANGE");
+        // break;
       }
     });
 
-    if(document.cookie.includes('authtoken')) {
-      UserActions.getProject();
-    }
+
+
+    // if(document.cookie.includes('authtoken')) {
+    //   UserActions.getProject();
+    // }
   }
 
   startListening(cb) {
