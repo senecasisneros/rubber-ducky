@@ -44,7 +44,7 @@ export default class Navbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to='/'><b>REACTSPACE</b></Link>
+            <Link className="navbar-brand" to='/'><b>Rubber Ducky</b></Link>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             {/* <UserWelcome profile={profile}/> */}
