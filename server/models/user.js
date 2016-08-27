@@ -10,7 +10,10 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  image: { type: String, default: 'http://kikuserfinder.com/assets/img/default.png'}
+  image: { type: String, default: 'http://kikuserfinder.com/assets/img/default.png'},
+
+  project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' }
+
 });
 
 userSchema.statics.register = function(userObj, cb) {

@@ -5,12 +5,20 @@ const router = express.Router();
 
 const Project = require('../models/project');
 
-router.route('/')
-.get((req, res) => {
-  Project.find({}, (err, projects) => {
-    res.status(err ? 400 : 200).send(err || projects);
+router.get('/:id', (req, res) => {
+  Project.findById(req.params.id, (err, project) => {
+    if(err || !project) {
+      return res.status(400).send(err || "Project not found");
+    }
+    res.send(project)
   })
 })
+// router.route('/')
+// .get((req, res) => {
+//   Project.find({}, (err, projects) => {
+//     res.status(err ? 400 : 200).send(err || projects);
+//   })
+// })
 
 
 .post((req, res) => {
@@ -23,14 +31,6 @@ router.route('/')
 //   res.send(req.user);
 // });
 
-router.get('/:id', (req, res) => {
-  Project.findById(req.params.id, (err, project) => {
-    if(err || !project) {
-      return res.status(400).send(err || "Project not found");
-    }
-    res.send(project)
-  }).populate('user')
-})
 
 
 router.put('/:projectId/addUser/:userId', (req, res) => {

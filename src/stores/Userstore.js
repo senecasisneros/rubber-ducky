@@ -5,6 +5,7 @@ import Constants from '../Constants';
 
 let _profile = null;
 let _profiles = [];
+let _userId = {};
 
 class UserStore extends EventEmitter {
   constructor() {

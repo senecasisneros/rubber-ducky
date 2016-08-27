@@ -12,8 +12,6 @@ import ProjectPage from './components/ProjectPage'
 
 import UserStore from './stores/UserStore'
 
-
-//maybe wrong
 render(
   <Router history={browserHistory}>
     <Route path='/' component={Layout}>
@@ -21,7 +19,7 @@ render(
       <Route path='register' component={RegisterPage}/>
       <Route path='login' component={LoginPage}/>
       <Route path='profile' component={ProfilePage}/>
-      <Route path='project' component={ProjectPage}/>
+      <Route path='users/:id' component={ProjectPage}/>
     </Route>
   </Router>,
   document.getElementById('root')

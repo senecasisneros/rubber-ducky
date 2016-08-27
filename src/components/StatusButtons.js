@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import UserActions from '../actions/UserActions';
 
 export default class StatusButtons extends Component {
@@ -12,6 +12,7 @@ export default class StatusButtons extends Component {
   _logout() {
     UserActions.logout();
   }
+
 
   render() {
     let { profile } = this.props;
@@ -30,7 +31,7 @@ export default class StatusButtons extends Component {
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/profile">View Profile</Link></li>
-        <li><Link to="projects">View Project</Link></li>
+        <li><a onClick={() => browserHistory.push(`/users/${profile._id}`)}>View Project</a></li>
         <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
       </ul>
     )

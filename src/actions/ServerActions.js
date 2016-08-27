@@ -22,10 +22,10 @@ const ServerActions = {
     })
   },
 
-  receiveProject(project) {
+  receiveProject(obj) {
     AppDispatcher.dispatch({
       type: Constants.RECEIVE_PROJECT,
-      project
+      obj
     })
   }
 };

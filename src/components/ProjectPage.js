@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import ProjectStore from '../stores/ProjectStore';
 import EditProfile from './EditProfile';
+import UserActions from '../actions/UserActions';
+import UserStore from '../stores/UserStore';
 
 export default class ProjectPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      project: ProjectStore.get()
-    }
+      // profile: UserActions.getProfile(),
+      profile: UserStore.get(),
+      // project: ProjectStore.get()
 
+    }
     this._onChange = this._onChange.bind(this);
+    let { _id, username } = this.state.profile;
+    UserActions.getProject(_id)
   }
 
-  componentDidMount() {
+  componentDidMount(_id) {
     ProjectStore.startListening(this._onChange);
   }
 
@@ -22,17 +28,24 @@ export default class ProjectPage extends Component {
   }
 
   _onChange() {
-    this.setState({
-      project: ProjectStore.get()
-    })
+    // console.log('this.state.profile:', this.state.profile)
+      // profile: UserStore.get()
   }
-//lalalalala
   render() {
+    if(this.state.profile){
+      let { username, _id} = this.state.profile
       return (
         <div className="container">
-          <h1>This is {this.state.project.projectName}</h1>
+          <h1>Project Page </h1>
           {/* <EditProfile project={this.state.project}/> */}
         </div>
       )
+    } else{
+      return(
+        <h1>MyBook</h1>
+      )
     }
 }
+}
+
+// {this.state.project.projectName}

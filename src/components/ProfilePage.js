@@ -26,7 +26,6 @@ export default class ProfilePage extends Component {
       profile: UserStore.get()
     })
   }
-//lalalalala
   render() {
       return (
         <div className="container">

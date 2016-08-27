@@ -6,19 +6,19 @@ import ServerActions from './actions/ServerActions';
 const API = {
   register(user) {
     axios.post('/api/users/register', user)
-      .then(res => {
-        RouteActions.route('/login');
-      })
-      .catch(console.error);
+    .then(res => {
+      RouteActions.route('/login');
+    })
+    .catch(console.error);
   },
 
   login(attempt) {
     axios.post('/api/users/login', attempt)
-      .then(() => {
-        UserActions.getProfile();
-        RouteActions.route('/');
-      })
-      .catch(console.error);
+    .then(() => {
+      UserActions.getProfile();
+      RouteActions.route('/');
+    })
+    .catch(console.error);
   },
 
   logout() {
@@ -27,40 +27,51 @@ const API = {
       ServerActions.removeProfile();
       RouteActions.route('/');
     })
-      // .then(ServerActions.removeProfile)
-      // .then(RouteActions.route('/');
-      .catch(console.error);
+    // .then(ServerActions.removeProfile)
+    // .then(RouteActions.route('/');
+    .catch(console.error);
   },
 
+//// get profile data only///////
   getProfile() {
     axios.get(`/api/users/profile`)
-      .then(res => res.data)
-      .then(ServerActions.receiveProfile)
-      .catch(console.error);
+    .then(res => res.data)
+    .then(ServerActions.receiveProfile)
+    .catch(console.error);
   },
 
   editProfile(updatedUser) {
     axios.put(`/api/users/profile`, updatedUser)
-      .then(() => {
-        UserActions.getProfile();
-        RouteActions.route('/profile')
-      })
-      .catch(console.error);
+    .then(() => {
+      UserActions.getProfile();
+      RouteActions.route('/profile')
+    })
+    .catch(console.error);
   },
+  //
+  // getProfiles() {
+  //   axios.get(`/api/users`)
+  //   .then(res => res.data)
+  //   .then(ServerActions.receiveProfiles)
+  //   .catch(console.error);
+  // },
 
-  getProfiles() {
-    axios.get(`/api/users`)
-      .then(res => res.data)
-      .then(ServerActions.receiveProfiles)
-      .catch(console.error);
-  },
-
-  getProject() {
-  axios.get('/api/project')
-    .then(res => res.data)
+  getProject(id) {
+    axios.get(`/api/users/${id}`)
+    .then(res => {
+      console.log('getProject:', res)
+    })
     .then(ServerActions.receiveProject)
     .catch(console.error)
-},
+  }
+  // getProject() {
+  //   axios.get(`/api/projects`)
+  //   .then(res => {
+  //     console.log('res:', res)
+  //   })
+  //   .then(ServerActions.receiveProject)
+  //   .catch(console.error)
+  // }
 
 }
 

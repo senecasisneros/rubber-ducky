@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../AppDispatcher';
-import ProjectActions from '../actions/ProjectActions';
+import UserActions from '../actions/UserActions';
 import Constants from '../Constants';
 
 let _project = null;
@@ -19,15 +19,11 @@ class ProjectStore extends EventEmitter {
           _project = null;
           this.emit('CHANGE');
           break;
-        case Constants.RECEIVE_PROFILES:
-          _projects = action.projects;
-          this.emit('CHANGE');
-          break;
       }
     });
 
     if(document.cookie.includes('authtoken')) {
-      ProjectActions.getProject();
+      UserActions.getProject();
     }
   }
 
@@ -40,6 +36,7 @@ class ProjectStore extends EventEmitter {
   }
 
   get() {
+    console.log('ProjectStore:', _project)
     return _project;
   }
 

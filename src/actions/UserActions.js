@@ -7,7 +7,11 @@ const UserActions = {
   logout: API.logout,
   editProfile: API.editProfile,
   getProfiles: API.getProfiles,
-  getProject: API.getProject
+  // getProject: API.getProject
+  getProject(id) {
+    console.log('UserActionID:', id)
+    API.getProject(id);
+  }
 };
 
 export default UserActions;
