@@ -28,4 +28,18 @@ router.post('/logout', (req, res) => {
   res.clearCookie('authtoken').send();
 });
 
+router.put('/profile', User.authMiddleware, (req, res) => {
+  User.findByIdAndUpdate(req.user._id, {$set: req.body}, {new: true}, (err, user) => {
+    req.user.save(err => {
+      res.status(err ? 400: 200).send(err);
+    })
+  })
+})
+
+router.get('/', (req, res) => {
+  User.find((err, users) => {
+    res.send(users);
+  })
+})
+
 module.exports = router;
