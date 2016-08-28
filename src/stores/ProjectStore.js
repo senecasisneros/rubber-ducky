@@ -14,7 +14,7 @@ class ProjectStore extends EventEmitter {
       switch(action.type) {
         case Constants.RECEIVE_PROJECT:
         _project = action.project;
-        console.log('_project:', _project)
+        console.log('_project1:', _project)
         this.emit('CHANGE');
         break;
         case Constants.REMOVE_PROFILE:

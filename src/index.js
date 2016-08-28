@@ -22,6 +22,8 @@ render(
       <Route path='profile' component={ProfilePage}/>
       <Route path='users/:id' component={ProjectPage}/>
       <Route path='notes' component={ProjectForm}/>
+      <Route path='projects/:id' component={ProjectPage}/>
+      <Route path='ProfilePage' component={ProjectPage}/>
       {/* <Route path='addProject' component={AddProject}/> */}
     </Route>
   </Router>,

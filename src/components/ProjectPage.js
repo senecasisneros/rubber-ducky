@@ -18,6 +18,7 @@ export default class ProjectPage extends Component {
     this._onChange = this._onChange.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
     let { _id, username } = this.state.project;
+    let { id, title, notes } = this.state.newProject;
     UserActions.getProject(_id)
   }
 
@@ -29,11 +30,10 @@ export default class ProjectPage extends Component {
     ProjectStore.stopListening(this._onChange);
   }
 
-  deleteProject(_id){
-    console.log('deleteProject:', _id)
-  UserActions.deleteProject(_id);
+  deleteProject(id){
+    console.log('deleteProject:', id)
+    UserActions.deleteProject(id);
   }
-
   _onChange() {
     this.state({
       project: UserStore.get(),
@@ -42,18 +42,19 @@ export default class ProjectPage extends Component {
 }
   render() {
     if(this.state.newProject){
-      console.log('this.state.project!!!!!!!:', this.state.newProject)
-      let { title, notes } = this.state.newProject
+      let { title, notes, _id } = this.state
+      console.log('this.state.newProject:', this.state.newProject)
       return(
         <div className="row well well-small">
         <div className="col-xs-12">
-        <h4>Title:   {title}</h4>
-        <h4>Notes:  {notes}</h4>
-        <button type="button" className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(null)}>Delete</button>
+        <h4>Title:   {this.state.newProject.title}</h4>
+        <h4>Notes:  {this.state.newProject.notes}</h4>
+        <h4>Notes:  {this.state.newProject._id}</h4>
+        <button type="button" className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(null, this.state.newProject.id)}>Delete</button>
 
         {/* <button onClick={this.showModal} className="btn btn-success">Edit Profile</button> */}
         </div>
-        <ProjectForm project={this.state.newProject} />
+        {/* <ProjectForm project={this.state.newProject} /> */}
         </div>
       )
     } else{

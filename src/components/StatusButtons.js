@@ -31,8 +31,10 @@ export default class StatusButtons extends Component {
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/profile">View Profile</Link></li>
-        <li><a onClick={() => browserHistory.push(`/users/${profile._id}`)}>View Project</a></li>
+        {/* <li><a onClick={() => browserHistory.push(`/users/${profile._id}`)}>View Project</a></li> */}
+        {/* <li><a onClick={() => browserHistory.push(`/projects/${this.state.newProject._id}`)}>View Project</a></li> */}
         <li><Link to='notes'>Notes</Link></li>
+        <li><Link to='ProfilePage'>Pr</Link></li>
         <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
       </ul>
     )

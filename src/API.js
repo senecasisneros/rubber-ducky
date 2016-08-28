@@ -60,7 +60,7 @@ const API = {
   getProject(id) {
     axios.get(`/api/users/${id}`)
     .then(res => {
-      console.log('getProject:', res)
+      // console.log('getProject:', res)
     })
     .then(ServerActions.receiveProject)
     .catch(console.error)

@@ -26,8 +26,8 @@ export default class ProjectForm extends Component {
     let { title, notes } = this.state;
 
     UserActions.createProject({ title, notes});
-    // browserHistory.push('/ProjectPage')
-    console.log('PF sending obj with title and notes')
+    browserHistory.push('/ProjectPage')
+    // console.log('PF sending obj with title and notes')
     this.setState({
       title: '',
       notes: ''
