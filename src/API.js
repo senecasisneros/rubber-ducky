@@ -77,7 +77,7 @@ const API = {
   // }
 
   createProject(project) {
-    console.log('API create project:', project)
+    // console.log('API create project:', project)
     axios.post('/api/projects', project)
     .then(res =>  res.data)
     .then(ServerActions.receiveProject)
@@ -85,17 +85,17 @@ const API = {
   },
 
   deleteProject(id) {
-    console.log('API delete project:', id)
+    // console.log('API delete project:', id)
     axios.delete(`/api/projects/${id}`)
     .then(ServerActions.deleteProject(id))
     .catch(console.error);
   },
 
   editProject(id) {
-    console.log('API edit project:', id)
+    // console.log('API edit project:', id)
     axios.put(`/api/projects/${id}`)
     .then(res => {
-      console.log('rea', res);
+      // console.log('res', res);
       ServerActions.editProject(res.data);
     }
   )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserActions from '../actions/UserActions'
 import { browserHistory } from 'react-router';
-import ProjectStore from '../stores/ProjectStore';
+import ProjectStore from '../stores/ProjectStore'
 
 export default class ProjectForm extends Component {
   constructor(props) {
@@ -37,9 +37,13 @@ export default class ProjectForm extends Component {
   changeTaskInput(event) {
     let project = ProjectStore.get();
     let projects = ProjectStore.getAll();
-    console.log('projects gljkhnjlbh', projects);
     let { title, notes } = project;
-    this.setState({ title, notes, projects: projects});
+    this.setState({
+      title, notes,
+      title: '',
+      notes: '',
+      projects: projects
+    });
   }
 
   editProject(id) {
@@ -48,13 +52,11 @@ export default class ProjectForm extends Component {
   }
 
   deleteProject(id) {
-    console.log("id FROM DELETEPROJECT", id)
     UserActions.deleteProject(id);
   }
 
   onSubmit(event) {
     event.preventDefault();
-    console.log('click')
     let { title, notes } = this.state;
 
     UserActions.createProject({ title, notes});
@@ -65,16 +67,15 @@ export default class ProjectForm extends Component {
 
   render() {
     let {title, notes} = this.state;
-    console.log('this.state', this.state);
     let Projects = this.state.projects.map((project, i) => {
-      console.log("PROJECT FROM EDITFORM MAPPED", project)
       return (
-        <li key={i}>
+        <div key={i} className="notes">
+        <a className="deleteBtn" onClick={this.deleteProject.bind(null, project._id)}>x</a>
           <span onDoubleClick={this.editProject.bind(null, project._id)}>
-          Title: {project.title} Notes: {project.notes}
+          <p>Title: {project.title}</p>
+          <p>{project.notes}</p>
           </span>
-          <button onClick={this.deleteProject.bind(null, project._id)}>x</button>
-        </li>
+        </div>
       );
     })
     return (
@@ -92,8 +93,8 @@ export default class ProjectForm extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="projectNotes">Notes:</label>
-            <input type="text"
-                   className="form-control"
+            <textarea rows="4" cols="60" type="text"
+                   className="form-control "
                    id="projectNotes"
                    placeholder="Notes"
                    value={this.state.notes}

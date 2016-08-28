@@ -27,6 +27,8 @@
     "react": "^15.3.0",
     "react-bootstrap": "^0.30.2",
     "react-dom": "^15.3.0",
+    "react-drag-and-drop": "^2.0.2",
+    "react-edit-inline": "^1.0.7",
     "react-router": "^2.6.1",
     "reflux": "^0.4.1"
   },
