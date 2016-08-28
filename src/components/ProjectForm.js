@@ -14,7 +14,7 @@ export default class ProjectForm extends Component {
     this.changeTaskInput = this.changeTaskInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
-
+    this.editProject = this.editProject.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +37,14 @@ export default class ProjectForm extends Component {
   changeTaskInput(event) {
     let project = ProjectStore.get();
     let projects = ProjectStore.getAll();
-    // console.log('HELWKEJFWLE', projects);
+    console.log('projects gljkhnjlbh', projects);
     let { title, notes } = project;
-    this.setState({ title, notes, projects});
+    this.setState({ title, notes, projects: projects});
+  }
+
+  editProject(id) {
+    console.log('CLICK');
+    UserActions.editProject(id);
   }
 
   deleteProject(id) {
@@ -60,8 +65,17 @@ export default class ProjectForm extends Component {
 
   render() {
     let {title, notes} = this.state;
+    console.log('this.state', this.state);
     let Projects = this.state.projects.map((project, i) => {
-      return <li key={i}><span>Title: {project.title} Notes: {project.notes}</span><button onClick={this.deleteProject.bind(null, project._id)}>x</button></li>
+      console.log("PROJECT FROM EDITFORM MAPPED", project)
+      return (
+        <li key={i}>
+          <span onDoubleClick={this.editProject.bind(null, project._id)}>
+          Title: {project.title} Notes: {project.notes}
+          </span>
+          <button onClick={this.deleteProject.bind(null, project._id)}>x</button>
+        </li>
+      );
     })
     return (
       <div>

@@ -30,6 +30,11 @@ class ProjectStore extends EventEmitter {
           console.log('REMOVE PROJECT SENT FROM STORE:', _projects)
           this.emit("CHANGE");
           break;
+        case Constants.EDIT_PROJECT:
+          _projects = action.project;
+          console.log('EDIT PROJECT STORE_project:', _projects);
+          this.emit('CHANGE');
+          break;
       }
     });
 
@@ -53,6 +58,7 @@ class ProjectStore extends EventEmitter {
   }
 
   getAll() {
+    console.log('_projects', _projects);
     return _projects;
   }
 

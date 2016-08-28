@@ -39,10 +39,15 @@ const ServerActions = {
       type: 'DELETE_PROJECT',
       id
     })
+  },
+
+  editProject(project) {
+    console.log('SERVER ACTIONS editProject:', project)
+    AppDispatcher.dispatch({
+      type: 'Constants.EDIT_PROJECT',
+      project
+    })
   }
-
-
-
 };
 
 export default ServerActions;

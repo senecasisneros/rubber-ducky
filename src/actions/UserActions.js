@@ -11,18 +11,15 @@ const UserActions = {
     API.getProject(id);
   },
   createProject(project) {
-    console.log("createpProject FROM USERACTIONS:", project)
     API.createProject(project);
   },
   deleteProject(id) {
-    console.log("FROM USERACTION ID:", id);
     API.deleteProject(id);
   },
-  editProfile() {
-    API.editProfile();
+  editProject(id) {
+    console.log("FROM USERACTION EDIT ID:", id);
+    API.editProject(id);
   }
-
-
 };
 
 export default UserActions;
