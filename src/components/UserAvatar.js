@@ -9,7 +9,7 @@ export default class UserAvatar extends Component {
     }
 
     return (
-      <img src={profile.image} height="50px" />
+      <img id = "avatar" src={profile.image} height="50px" />
     )
   }
 }

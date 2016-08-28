@@ -7,23 +7,19 @@ const UserActions = {
   logout: API.logout,
   getProfiles: API.getProfiles,
   getProject(id) {
+    // console.log('UserActionID:', id)
     API.getProject(id);
   },
   createProject(project) {
-    // console.log('UA getting and sending 2 API obj with title and notes:', project)
     API.createProject(project);
   },
   deleteProject(id) {
-    console.log('UA delete:', id)
-    console.log('UserActionID:', id)
     API.deleteProject(id);
   },
-  editProfile() {
-    console.log('UA edit:', id)
-    API.editProfile();
+  editProject(id) {
+    console.log("FROM USERACTION EDIT ID:", id);
+    API.editProject(id);
   }
-
-
 };
 
 export default UserActions;

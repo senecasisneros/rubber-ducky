@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 export default class UserWelcome extends Component {
   render() {
     let { profile } = this.props;
@@ -9,8 +8,8 @@ export default class UserWelcome extends Component {
     }
 
     return (
-      <p className="navbar-text">
-       <b>{profile.username}</b>
+      <p id = "welcomeText" className="navbar-text">
+       <b>Welcome {profile.username}!</b>
       </p>
     )
   }

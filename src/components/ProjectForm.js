@@ -1,23 +1,55 @@
 import React, { Component } from 'react'
 import UserActions from '../actions/UserActions'
 import { browserHistory } from 'react-router';
-import ProjectPage from './ProjectPage'
+import ProjectStore from '../stores/ProjectStore';
 
 export default class ProjectForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      notes: ''
+      notes: '',
+      projects: []
     }
-
     this.changeTaskInput = this.changeTaskInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
+    this.editProject = this.editProject.bind(this);
   }
 
+  componentDidMount() {
+    ProjectStore.startListening(this.changeTaskInput);
+  }
+
+  componentWillUnmount() {
+    ProjectStore.stopListening(this.changeTaskInput);
+  }
+
+  // _onInputChange(e) {
+  //   let key = e.target.dataset.statekey;
+  //   let value = e.target.value;
+  //
+  //   // this.setState({
+  //   //   [key]: value
+  //   // });
+  // }
+
   changeTaskInput(event) {
-    let project = event.target.value;
-    this.setState({ project })
+    let project = ProjectStore.get();
+    let projects = ProjectStore.getAll();
+    console.log('projects gljkhnjlbh', projects);
+    let { title, notes } = project;
+    this.setState({ title, notes, projects: projects});
+  }
+
+  editProject(id) {
+    console.log('CLICK');
+    UserActions.editProject(id);
+  }
+
+  deleteProject(id) {
+    console.log("id FROM DELETEPROJECT", id)
+    UserActions.deleteProject(id);
   }
 
   onSubmit(event) {
@@ -26,39 +58,54 @@ export default class ProjectForm extends Component {
     let { title, notes } = this.state;
 
     UserActions.createProject({ title, notes});
-    browserHistory.push('/ProjectPage')
-    // console.log('PF sending obj with title and notes')
     this.setState({
-      title: '',
-      notes: ''
+      project: ProjectStore.get()
     });
   }
 
   render() {
+    let {title, notes} = this.state;
+    console.log('this.state', this.state);
+    let Projects = this.state.projects.map((project, i) => {
+      console.log("PROJECT FROM EDITFORM MAPPED", project)
+      return (
+        <li key={i}>
+          <span onDoubleClick={this.editProject.bind(null, project._id)}>
+          Title: {project.title} Notes: {project.notes}
+          </span>
+          <button onClick={this.deleteProject.bind(null, project._id)}>x</button>
+        </li>
+      );
+    })
     return (
-      <form>
-        <div className="form-group">
-          <label htmlFor="title">Project Title:</label>
-          <input type="text"
-                 className="form-control"
-                 id="title"
-                 placeholder="Project Title"
-                 value={this.state.title}
-                 onChange={event => this.setState({title: event.target.value})}
-                 />
-        </div>
-        <div className="form-group">
-          <label htmlFor="projectNotes">Notes:</label>
-          <input type="text"
-                 className="form-control"
-                 id="projectNotes"
-                 placeholder="Notes"
-                 value={this.state.notes}
-                 onChange={event => this.setState({notes: event.target.value})}
-                 />
-        </div>
-        <button className="btn btn-default" onClick={this.onSubmit}>Submit</button>
-      </form>
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label htmlFor="title">Project Title:</label>
+            <input type="text"
+                   className="form-control"
+                   id="title"
+                   placeholder="Project Title"
+                   value={this.state.title}
+                   onChange={event => this.setState({title: event.target.value})}
+                   />
+          </div>
+          <div className="form-group">
+            <label htmlFor="projectNotes">Notes:</label>
+            <input type="text"
+                   className="form-control"
+                   id="projectNotes"
+                   placeholder="Notes"
+                   value={this.state.notes}
+                   onChange={event => this.setState({notes: event.target.value})}
+                   />
+          </div>
+          <button type='submit' className="btn btn-default">Submit</button>
+        </form>
+        <ul>
+          {Projects}
+        </ul>
+      </div>
     )
   }
 }

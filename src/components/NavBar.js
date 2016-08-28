@@ -35,7 +35,7 @@ export default class Navbar extends Component {
 
     return (
       <div>
-      <nav className="navbar navbar-inverse navbar-static-top">
+      <nav id = "nav" className="navbar navbar-default">
         <div className="container-fluid">
 
           <div className="navbar-header">

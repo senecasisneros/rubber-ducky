@@ -27,7 +27,7 @@ const ServerActions = {
   /////// Project /////////////////
 
   receiveProject(project) {
-    // console.log('sending data to store:', project)
+    console.log('SERVER ACTIONS receiveProject:', project)
     AppDispatcher.dispatch({
       type: Constants.RECEIVE_PROJECT,
       project
@@ -39,10 +39,15 @@ const ServerActions = {
       type: 'DELETE_PROJECT',
       id
     })
+  },
+
+  editProject(project) {
+    console.log('SERVER ACTIONS editProject:', project)
+    AppDispatcher.dispatch({
+      type: 'Constants.EDIT_PROJECT',
+      project
+    })
   }
-
-
-
 };
 
 export default ServerActions;
