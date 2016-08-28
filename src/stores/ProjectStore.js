@@ -14,18 +14,18 @@ class ProjectStore extends EventEmitter {
       switch(action.type) {
         case Constants.RECEIVE_PROJECT:
         _project = action.project;
-        console.log('_project:', _project)
+        console.log('RECEIVE PROJECT STORE_project:', _project)
         this.emit('CHANGE');
         break;
         case Constants.REMOVE_PROFILE:
         _project = null;
         this.emit('CHANGE');
         break;
-        // case 'DELETE_PROJECT':
-        // var { id } = action;
-        // _project = _project.filter(i => i._id !== id);
-        // this.emit("CHANGE");
-        // break;
+        case Constants.DELETE_PROJECT:
+        var { id } = action;
+        _project = _project.filter(i => i._id !== id);
+        this.emit("CHANGE");
+        break;
       }
     });
 
@@ -45,12 +45,17 @@ class ProjectStore extends EventEmitter {
   }
 
   get() {
-    console.log('ProjectStore:', _project)
+    // console.log('ProjectStore:', _project)
     return _project;
   }
 
   getAll() {
     return _projects;
+  }
+
+  deleteProject() {
+    console.log('removeProject:', _project)
+    return _project;
   }
 }
 

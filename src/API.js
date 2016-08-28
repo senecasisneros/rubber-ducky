@@ -77,6 +77,7 @@ const API = {
   // }
 
   createProject(project) {
+    console.log('API create project:', project)
   axios.post('/api/projects', project)
   .then(res =>  res.data)
   .then(ServerActions.receiveProject)
@@ -86,7 +87,6 @@ const API = {
 
 deleteProject(id) {
   axios.delete(`/api/projects/${id}`)
-  .then(res => res.data)
   .then(ServerActions.deleteProject(id))
   .catch(console.error);
 }
