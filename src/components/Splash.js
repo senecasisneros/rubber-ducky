@@ -6,9 +6,11 @@ export default class Splash extends Component {
   render() {
 
     return (
-      <h1 className="text-center">
-        <span id="splash">Rubber Ducky</span>
-      </h1>
+      <div>
+        <h1 className="text-center">
+          <span id="splash">Rubber Ducky</span>
+        </h1>
+      </div>
     )
   }
 }

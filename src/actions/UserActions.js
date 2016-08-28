@@ -11,16 +11,13 @@ const UserActions = {
     API.getProject(id);
   },
   createProject(project) {
-    console.log("project:", project)
-    // console.log('UA getting and sending 2 API obj with title and notes:', project)
+    console.log("createpProject FROM USERACTIONS:", project)
     API.createProject(project);
   },
   deleteProject(id) {
-    // console.log('UA delete:', id)
     API.deleteProject(id);
   },
   editProfile() {
-    // console.log('UA edit:', id)
     API.editProfile();
   }
 
