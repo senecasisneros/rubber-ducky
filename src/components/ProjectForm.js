@@ -11,9 +11,10 @@ export default class ProjectForm extends Component {
       notes: '',
       projects: []
     }
-    console.log("TEST2:,", this.state.project)
     this.changeTaskInput = this.changeTaskInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
+
   }
 
   componentDidMount() {
@@ -34,17 +35,16 @@ export default class ProjectForm extends Component {
   // }
 
   changeTaskInput(event) {
-    // let project = event.target.value;
-    // console.log("project: ", project)
-    // this.setState({ project })
-
-
-
     let project = ProjectStore.get();
     let projects = ProjectStore.getAll();
-    console.log('HELWKEJFWLE', projects);
+    // console.log('HELWKEJFWLE', projects);
     let { title, notes } = project;
     this.setState({ title, notes, projects});
+  }
+
+  deleteProject(id) {
+    console.log("id FROM DELETEPROJECT", id)
+    UserActions.deleteProject(id);
   }
 
   onSubmit(event) {
@@ -59,10 +59,9 @@ export default class ProjectForm extends Component {
   }
 
   render() {
-    console.log('STATESTATE', this.state.title, this.state.notes);
     let {title, notes} = this.state;
     let Projects = this.state.projects.map((project, i) => {
-      return <li key={i}>Title: {project.title} Notes: {project.notes}</li>
+      return <li key={i}><span>Title: {project.title} Notes: {project.notes}</span><button onClick={this.deleteProject.bind(null, project._id)}>x</button></li>
     })
     return (
       <div>

@@ -26,7 +26,8 @@ class ProjectStore extends EventEmitter {
           break;
         case Constants.DELETE_PROJECT:
           var { id } = action;
-          _project = _project.filter(i => i._id !== id);
+          _projects = _projects.filter(i => i._id !== id);
+          console.log('REMOVE PROJECT SENT FROM STORE:', _projects)
           this.emit("CHANGE");
           break;
       }
@@ -48,7 +49,6 @@ class ProjectStore extends EventEmitter {
   }
 
   get() {
-    console.log('ProjectStoreGET():', _project)
     return _project;
   }
 
@@ -57,8 +57,8 @@ class ProjectStore extends EventEmitter {
   }
 
   deleteProject() {
-    console.log('removeProject:', _project)
-    return _project;
+    // console.log('REMOVE PROJECT SENT FROM STORE:', _project)
+    return _projects;
   }
 }
 

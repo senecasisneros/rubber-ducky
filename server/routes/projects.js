@@ -33,19 +33,19 @@ router.get('/:id', (req, res) => {
 
 
 
-router.put('/:projectId/addUser/:userId', (req, res) => {
-  Project.findById(req.params.projectId, (err, project) => {
-    if(err || !project) {
-      return res.status(400).send(err || "Project not found");
-    }
-
-    let userId = req.params.userId;
-    project.user = userId;
-    project.save((err, savedProject) => {
-      return res.status(400).send(err || savedProject);
-    })
-  })
-})
+// router.put('/:projectId/addUser/:userId', (req, res) => {
+//   Project.findById(req.params.projectId, (err, project) => {
+//     if(err || !project) {
+//       return res.status(400).send(err || "Project not found");
+//     }
+//
+//     let userId = req.params.userId;
+//     project.user = userId;
+//     project.save((err, savedProject) => {
+//       return res.status(400).send(err || savedProject);
+//     })
+//   })
+// })
 
 
 router.route('/:id')

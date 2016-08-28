@@ -34,9 +34,10 @@ const ServerActions = {
     })
   },
 
-  deleteProject() {
+  deleteProject(id) {
     AppDispatcher.dispatch({
-      type: 'DELETE_PROJECT'
+      type: 'DELETE_PROJECT',
+      id
     })
   }
 

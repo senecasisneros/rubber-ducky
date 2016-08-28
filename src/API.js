@@ -86,6 +86,7 @@ const API = {
 
 
 deleteProject(id) {
+  console.log('API delete project:', id)
   axios.delete(`/api/projects/${id}`)
   .then(ServerActions.deleteProject(id))
   .catch(console.error);

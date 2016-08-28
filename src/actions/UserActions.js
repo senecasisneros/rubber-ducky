@@ -15,6 +15,7 @@ const UserActions = {
     API.createProject(project);
   },
   deleteProject(id) {
+    console.log("FROM USERACTION ID:", id);
     API.deleteProject(id);
   },
   editProfile() {
