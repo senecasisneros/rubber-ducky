@@ -8,7 +8,7 @@ import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage'
 import ProfilePage from './components/ProfilePage'
 import ProjectForm from './components/ProjectForm'
-
+import css from './css/style.css'
 
 import UserStore from './stores/UserStore'
 

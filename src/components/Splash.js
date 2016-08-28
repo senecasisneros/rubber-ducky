@@ -8,7 +8,7 @@ export default class Splash extends Component {
     return (
       <div>
         <h1 className="text-center">
-          <span id="splash">Rubber Ducky</span>
+          <span id="splash">photos</span>
         </h1>
       </div>
     )

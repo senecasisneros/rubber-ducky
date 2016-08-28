@@ -1,0 +1,66 @@
+@import 'https://fonts.googleapis.com/css?family=Lato: 900';
+
+#welcomeText {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  left: 560px;
+}
+
+#profileImage {
+  border-radius: 50%;
+}
+
+#avatar {
+  position: relative;
+  left: 560px;
+  border-radius: 50%;
+}
+
+h1 {
+  font-size:60px;
+  font-weight: 900;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+    color:#fff;
+    font-size: 150px;
+    position:absolute;
+    top:80px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #ddf;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default {
+  height:190px;
+  background-color: #42a5f5;
+  border-color: none;
+}
+
+.navbar-default {
+  border-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+   position:relative;
+   top:125px;
+   font-size: 30px;
+   font-weight: bolder;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 10px 6px -6px #999;
+
+    /* the rest of your styling */
+}
