@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import UserActions from '../actions/UserActions'
+import { Link, browserHistory } from 'react-router'
+
 
 export default class LoginForm extends Component {
   constructor() {
@@ -26,6 +28,8 @@ export default class LoginForm extends Component {
   _submit(e) {
     e.preventDefault();
     UserActions.login(this.state);
+    browserHistory.push('/profile')
+
   }
 
   render() {

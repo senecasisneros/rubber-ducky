@@ -6,8 +6,9 @@ const UserActions = {
   getProfile: API.getProfile,
   logout: API.logout,
   getProfiles: API.getProfiles,
+  editProfile: API.editProfile,
+
   getProject(id) {
-    // console.log('UserActionID:', id)
     API.getProject(id);
   },
   createProject(project) {
@@ -17,7 +18,6 @@ const UserActions = {
     API.deleteProject(id);
   },
   editProject(id) {
-    console.log("FROM USERACTION EDIT ID:", id);
     API.editProject(id);
   }
 };

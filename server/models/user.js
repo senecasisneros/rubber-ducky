@@ -9,10 +9,13 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  name: { type: String, required: true },
+  aboutMe: { type: String },
+  links: { type: String },
+  location: { type: String },
+  occupation: { type: String },
   image: { type: String, default: 'http://kikuserfinder.com/assets/img/default.png'},
 
-  project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' }
+  // project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' }
 
 });
 

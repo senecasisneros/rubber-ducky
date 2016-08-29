@@ -18,21 +18,21 @@ router.get('/:id', (req, res) => {
   }).populate('project')
 })
 
-router.put('/:userId/addProject/:projectId', (req, res) => {
-  User.findById(req.params.userId, (err, user) => {
-    if(err || !user) {
-      return res.status(400).send(err || "User not found");
-    }
-
-    let projectId = req.params.projectId;
-
-    user.project = projectId;
-
-    user.save((err, savedUser) => {
-      return res.status(err ? 400 : 200).send(err || savedUser);
-    })
-  })
-})
+// router.put('/:userId/addProject/:projectId', (req, res) => {
+//   User.findById(req.params.userId, (err, user) => {
+//     if(err || !user) {
+//       return res.status(400).send(err || "User not found");
+//     }
+//
+//     let projectId = req.params.projectId;
+//
+//     user.project = projectId;
+//
+//     user.save((err, savedUser) => {
+//       return res.status(err ? 400 : 200).send(err || savedUser);
+//     })
+//   })
+// })
 router.post('/register', (req, res) => {
   User.register(req.body, err => {
     res.status(err ? 400 : 200).send(err);
@@ -59,7 +59,7 @@ router.put('/profile', User.authMiddleware, (req, res) => {
     req.user.save(err => {
       res.status(err ? 400: 200).send(err);
     })
-  }).populate('user')
+  })
 })
 
 

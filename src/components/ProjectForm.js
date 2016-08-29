@@ -37,24 +37,25 @@ export default class ProjectForm extends Component {
   changeTaskInput(event) {
     let project = ProjectStore.get();
     let projects = ProjectStore.getAll();
-    console.log('projects gljkhnjlbh', projects);
     let { title, notes } = project;
-    this.setState({ title, notes, projects: projects});
+    this.setState({
+        title, notes,
+        title: '',
+        notes: '',
+        projects: projects
+});
   }
 
   editProject(id) {
-    console.log('CLICK');
     UserActions.editProject(id);
   }
 
   deleteProject(id) {
-    console.log("id FROM DELETEPROJECT", id)
     UserActions.deleteProject(id);
   }
 
   onSubmit(event) {
     event.preventDefault();
-    console.log('click')
     let { title, notes } = this.state;
 
     UserActions.createProject({ title, notes});
@@ -65,41 +66,43 @@ export default class ProjectForm extends Component {
 
   render() {
     let {title, notes} = this.state;
-    console.log('this.state', this.state);
     let Projects = this.state.projects.map((project, i) => {
-      console.log("PROJECT FROM EDITFORM MAPPED", project)
       return (
-        <li key={i}>
-          <span onDoubleClick={this.editProject.bind(null, project._id)}>
-          Title: {project.title} Notes: {project.notes}
-          </span>
-          <button onClick={this.deleteProject.bind(null, project._id)}>x</button>
-        </li>
+        // <li key={i}>
+        //   <span onDoubleClick={this.editProject.bind(null, project._id)}>
+        //   Title: {project.title} Notes: {project.notes}
+        //   </span>
+        //   <button onClick={this.deleteProject.bind(null, project._id)}>x</button>
+        // </li>
+    <div className="photos" key={i}>
+      <img src={project.notes} />
+      <p className='desc'>{project.title}</p>
+    </div>
       );
     })
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Project Title:</label>
-            <input type="text"
-                   className="form-control"
-                   id="title"
-                   placeholder="Project Title"
-                   value={this.state.title}
-                   onChange={event => this.setState({title: event.target.value})}
-                   />
-          </div>
-          <div className="form-group">
-            <label htmlFor="projectNotes">Notes:</label>
-            <input type="text"
-                   className="form-control"
-                   id="projectNotes"
-                   placeholder="Notes"
-                   value={this.state.notes}
-                   onChange={event => this.setState({notes: event.target.value})}
-                   />
-          </div>
+        <div className="form-group">
+          <label htmlFor="projectNotes">Image:</label>
+          <input type="text"
+                 className="form-control"
+                 id="projectNotes"
+                 placeholder="Image Url"
+                 value={this.state.notes}
+                 onChange={event => this.setState({notes: event.target.value})}
+                 />
+                 <div className="form-group">
+                 <label htmlFor="title">Image Caption:</label>
+                 <input type="text"
+                 className="form-control"
+                 id="title"
+                 placeholder="Caption"
+                 value={this.state.title}
+                 onChange={event => this.setState({title: event.target.value})}
+                 />
+                 </div>
+        </div>
           <button type='submit' className="btn btn-default">Submit</button>
         </form>
         <ul>
